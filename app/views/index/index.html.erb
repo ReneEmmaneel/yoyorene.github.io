@@ -22,8 +22,7 @@
         <h1 class="fw-light">René Emmaneel</h1>
         <p class="lead text-muted">Collection of my work, very cool!</p>
         <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          <a href="<%= new_article_path %>" class="btn btn-primary my-2">New article</a>
         </p>
       </div>
     </div>
@@ -41,7 +40,7 @@
               <p class="card-text"><b><%= article.title %> </b><%= article.description %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="<%= article_path(article) %>"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                  <a href="<%= article_path(article) %>" class="btn btn-sm btn-outline-secondary">View</a>
                 </div>
               </div>
             </div>
