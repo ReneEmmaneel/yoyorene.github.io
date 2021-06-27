@@ -1,0 +1,13 @@
+<h1>Welcome</h1>
+
+<% if logged_in? %>
+  <h3>You are Logged In, <%= current_user.username %></h3>
+<% else %>
+  <h3>Not logged in :(</h3>
+<% end %>
+
+<%= button_to "Login", '/login', method: :get%>
+
+<%= button_to "Sign Up", '/users/new', method: :get%>
+
+<%= button_to "Log out", '/logout', method: :get%>
