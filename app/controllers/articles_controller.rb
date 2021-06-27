@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authorized, only: [:new]
+
   def index
   end
 
@@ -11,12 +13,16 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    if logged_in?
+      @article = Article.new(article_params)
 
-    if @article.save
-      redirect_to @article
+      if @article.save
+        redirect_to @article
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to '/'
     end
   end
 
