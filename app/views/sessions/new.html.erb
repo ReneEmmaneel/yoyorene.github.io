@@ -1,8 +1,14 @@
-<h1>Login</h1>
-<%= form_tag '/login' do %>
-  <%= label_tag :username%>
-  <%= text_field_tag :username %>
-  <%= label_tag :password%>
-  <%= password_field_tag :password%>
-  <%= submit_tag "Login"%>
+
+
+<%= form_tag('/login', {class: 'form-signin'}) do %>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <% if @error %>
+    <div class="error_explanation">
+       <a><%= @error %></a>
+    </div>
+  <%end%>
+  <%= text_field_tag(:username, "", {class: 'form-control', placeholder: 'Username', autofocus: true, autocomplete: "off"}) %>
+  <%= text_field_tag(:password, "", {class: 'form-control', placeholder: 'Password', required: true, type: "password"}) %>
+  <%= submit_tag("Login", {class: 'btn btn-lg btn-primary btn-block'}) %>
 <%end%>
+<%= stylesheet_link_tag "signin" %>

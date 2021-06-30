@@ -1,17 +1,14 @@
-
-
-<!-- inside app/views/welcome/index.html.erb -->
-<%= render "shared/navbar" %>
-
 <main>
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">René Emmaneel</h1>
         <p class="lead text-muted">Collection of my work, very cool!</p>
-        <p>
-          <a href="<%= new_article_path %>" class="btn btn-primary my-2">New article</a>
-        </p>
+        <% if logged_in? %>
+          <p>
+            <a href="<%= new_article_path %>" class="btn btn-primary my-2">New article</a>
+          </p>
+        <% end %>
       </div>
     </div>
   </section>
