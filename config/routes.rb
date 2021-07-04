@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#delete'
   get 'delete', to: 'sessions#delete'
 
+  get 'register', to: 'users#new', :as => :user
+  post 'register', to: 'users#create'
+
+  post 'create_account', to: 'users#create'
+
   get 'authorized', to: 'sessions#page_requires_login'
 
   resources :articles

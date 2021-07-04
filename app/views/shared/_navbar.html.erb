@@ -9,7 +9,7 @@
       <% if logged_in? %>
         <%= current_user.username %><br><a href='<%= delete_path %>'>Log out</a>
       <% else %>
-        <a href='<%= login_path %>'>Login</a><br><a href='<%= new_user_path %>'>Register</a>
+        <a href='<%= login_path %>'>Login</a><br><a href='<%= register_path %>'>Register</a>
       <% end %>
     </span>
   </div>
