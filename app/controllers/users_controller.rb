@@ -4,9 +4,35 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to '/welcome'
+    @user = User.find_by(username: params[:user][:username])
+    if @user
+      @error = "Username is already in use"
+      render :new
+    else
+      @user = User.create(user_params)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to '/'
+      else
+        render :new
+      end
+    end
+  end
+
+  def delete
+    if logged_in?
+      @user = User.find_by(id: params[:id])
+      if @user
+        @user.destroy
+      end
+      redirect_to '/all_users'
+    else
+      redirect_to '/'
+    end
+  end
+
+  def all_users
+    @all_users = User.all
   end
 
   private

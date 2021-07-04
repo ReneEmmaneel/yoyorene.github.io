@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="text-muted">
+      Socials van René Emmaneel<br>
+      <a class="link-primary" href='https://twitter.com/mincho_HS'>Twitter</a>
+    </span>
+
+    <span class="text-muted">
+      <% if logged_in? %>
+        <%= current_user.username %><br><a href='<%= delete_path %>'>Log out</a>
+      <% else %>
+        <a href='<%= login_path %>'>Login</a><br><a href='<%= register_path %>'>Register</a>
+      <% end %>
+    </span>
+  </div>
+</nav>
