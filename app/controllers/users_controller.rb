@@ -19,6 +19,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete
+    if logged_in?
+      @user = User.find_by(id: params[:id])
+      if @user
+        @user.destroy
+      end
+      redirect_to '/all_users'
+    else
+      redirect_to '/'
+    end
+  end
+
+  def all_users
+    @all_users = User.all
+  end
+
   private
     def user_params
       params.require(:user).permit(:username, :password)
