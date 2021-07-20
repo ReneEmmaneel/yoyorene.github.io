@@ -4,7 +4,7 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">René Emmaneel</h1>
         <p class="lead text-muted">Collection of my work, very cool!</p>
-        <% if logged_in? %>
+        <% if logged_in? and is_admin? %>
           <p>
             <a href="<%= new_article_path %>" class="btn btn-primary my-2">New article</a>
             <a href="<%= all_users_path %>" class="btn btn-primary my-2">All users</a>

@@ -20,10 +20,22 @@ class UsersController < ApplicationController
   end
 
   def delete
-    if logged_in?
+    if logged_in? and is_admin?
       @user = User.find_by(id: params[:id])
       if @user
         @user.destroy
+      end
+      redirect_to '/all_users'
+    else
+      redirect_to '/'
+    end
+  end
+
+  def make_admin
+    if logged_in? and is_admin?
+      @user = User.find_by(id: params[:id])
+      if @user
+        @user.update_attribute(:is_admin, 1)
       end
       redirect_to '/all_users'
     else

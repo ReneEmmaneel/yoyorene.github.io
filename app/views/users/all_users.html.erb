@@ -2,7 +2,7 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">All users</h1>
-      <% if logged_in? %>
+      <% if logged_in? and is_admin? %>
         <p class="lead text-muted">Here you can delete any user you want, that's neat!</p>
       <% else %>
         <p class="lead text-muted">Sorry, only access to admins to this page. :(</p>
@@ -11,17 +11,24 @@
   </div>
 </section>
 
-<% if logged_in? %>
+<% if logged_in? and is_admin? %>
   <div class="container">
     <div class="row">
       <% @all_users.each do |user| %>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             <div class="card-body">
-              <p class="card-text"><b><%= user.username %></b></p>
+              <p class="card-text"><b><%= user.username %></b>
+                <% if user.is_admin? %>
+                  <a>admin</a>
+                <% end %>
+              </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="/users/delete/<%= user.id %>" class="btn btn-sm btn-outline-secondary">Delete</a>
+                  <% if !user.is_admin? %>
+                    <a href="/users/make_admin/<%= user.id %>" class="btn btn-sm btn-outline-secondary">Make admin</a>
+                  <% end %>
                 </div>
               </div>
             </div>

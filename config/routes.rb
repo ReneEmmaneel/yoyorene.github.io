@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get 'authorized', to: 'sessions#page_requires_login'
   get '/users/delete/:id', to: "users#delete"
+  get '/users/make_admin/:id', to: "users#make_admin"
 
   get 'all_users', to: 'users#all_users'
 
