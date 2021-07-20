@@ -7,7 +7,11 @@
 
     <span class="text-muted">
       <% if logged_in? %>
-        <%= current_user.username %><br><a href='<%= delete_path %>'>Log out</a>
+        <%= current_user.username %>
+        <% if current_user.is_admin? %>
+          (admin)
+        <% end %>
+        <br><a href='<%= delete_path %>'>Log out</a>
       <% else %>
         <a href='<%= login_path %>'>Login</a><br><a href='<%= register_path %>'>Register</a>
       <% end %>

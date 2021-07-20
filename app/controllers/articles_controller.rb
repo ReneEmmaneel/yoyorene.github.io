@@ -26,6 +26,18 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def delete
+    if logged_in? and is_admin?
+      @article = Article.find_by(id: params[:id])
+      if @article
+        @article.destroy
+      end
+      redirect_to '/'
+    else
+      redirect_to '/'
+    end
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :description)

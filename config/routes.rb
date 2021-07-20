@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/articles", to: "articles#index"
   get "/articles/new", to: "articles#new"
   get "/articles/:id", to: "articles#show"
+  get "/articles/delete_article/:id", to: "articles#delete"
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
